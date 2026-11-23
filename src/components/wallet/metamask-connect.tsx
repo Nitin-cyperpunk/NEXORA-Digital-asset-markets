@@ -48,12 +48,12 @@ export function MetaMaskConnect() {
     }
   }
 
-  return <div className="flex flex-col items-end gap-1.5">
+  return <div className="relative flex flex-col items-end gap-1.5">
     <Button type="button" variant={account ? "secondary" : "outline"} size="sm" onClick={connect} disabled={busy || !!account} aria-label={account ? `MetaMask connected: ${account}` : "Connect MetaMask wallet"} className="border-[rgba(247,147,26,.35)] text-xs">
       {busy ? <LoaderCircle size={14} className="animate-spin"/> : <Wallet size={14} className="text-[#f7931a]"/>}
       <span className="hidden sm:inline">{account ? `${account.slice(0, 6)}…${account.slice(-4)}` : "Connect MetaMask"}</span>
       <span className="sm:hidden">{account ? `${account.slice(0, 4)}…${account.slice(-3)}` : "MetaMask"}</span>
     </Button>
-    {message && <p role="status" className="absolute right-4 top-[64px] z-50 max-w-[min(90vw,320px)] rounded-lg border border-[var(--border)] bg-[var(--card)] p-3 text-[11px] leading-relaxed text-[var(--muted)] shadow-xl sm:right-12">{message}</p>}
+    {message && <p role="alert" className="absolute right-0 top-11 z-50 w-[min(90vw,320px)] rounded-lg border border-[var(--border)] bg-[var(--card)] p-3 text-[11px] leading-relaxed text-[var(--muted)] shadow-xl">{message}</p>}
   </div>;
 }

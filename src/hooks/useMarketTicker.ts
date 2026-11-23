@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { createContext, createElement, useContext, useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { fetch24hTickers, fetchExchangeSymbols, normalizeTicker, tickerStreamUrl } from "@/lib/market/binance";
 import type { MarketStatus, MarketTicker } from "@/lib/market/types";
@@ -76,7 +76,7 @@ function useMarketTickerSource(pairs: string[], enabled: boolean): MarketTickerS
 
 export function MarketTickerProvider({ children }: { children: ReactNode }) {
   const state = useMarketTickerSource(DEFAULT_MARKET_PAIRS, true);
-  return <MarketTickerContext.Provider value={state}>{children}</MarketTickerContext.Provider>;
+  return createElement(MarketTickerContext.Provider, { value: state }, children);
 }
 
 export function useMarketTicker(pairs: string[] = DEFAULT_MARKET_PAIRS) {
