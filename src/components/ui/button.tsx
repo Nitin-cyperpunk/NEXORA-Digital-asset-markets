@@ -1,0 +1,4 @@
+import type { ButtonHTMLAttributes } from "react";
+import { cn } from "@/lib/utils";
+type Props = ButtonHTMLAttributes<HTMLButtonElement> & { variant?: "primary" | "secondary" | "ghost" | "outline"; size?: "sm" | "md" };
+export function Button({ className, variant="secondary", size="md", ...props }: Props) { return <button className={cn("inline-flex min-h-10 items-center justify-center gap-2 rounded-lg px-4 font-medium transition-colors disabled:pointer-events-none disabled:opacity-45", variant==="primary"&&"bg-[var(--accent)] text-[#06110e] hover:brightness-110", variant==="secondary"&&"bg-[var(--raised)] text-[var(--text)] hover:brightness-125", variant==="outline"&&"border border-[var(--border)] bg-transparent hover:bg-[var(--raised)]", variant==="ghost"&&"bg-transparent hover:bg-[var(--raised)]", size==="sm"&&"min-h-8 px-3 text-xs", className)} {...props}/>; }
