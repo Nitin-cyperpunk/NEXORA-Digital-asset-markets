@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { useEffect, useState } from "react";
-import { ArrowLeftRight, ChartNoAxesCombined, CircleHelp, ClipboardList, Command, LayoutDashboard, Menu, Search, Settings2, Wallet, X, ChartPie, Sun, Moon, ChevronDown, UserRound } from "lucide-react";
+import { ArrowLeftRight, ChartNoAxesCombined, CircleHelp, ClipboardList, Command, LayoutDashboard, Menu, Search, Settings2, Wallet, X, ChartPie, Sun, Moon, ChevronDown, UserRound, LogOut } from "lucide-react";
 import { useTheme } from "@/components/shared/theme-provider";
 import { siteConfig } from "@/config/site";
 import { Button } from "@/components/ui/button";
