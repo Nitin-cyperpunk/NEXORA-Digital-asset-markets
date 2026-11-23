@@ -1,0 +1,2 @@
+import { Card } from "@/components/ui/card";
+export function StatCard({label,value,detail,tone="positive"}:{label:string;value:string;detail:string;tone?:"positive"|"negative"|"neutral"}){return <Card className="p-4"><p className="text-[11px] text-[var(--muted)]">{label}</p><p className="mt-2 text-xl font-semibold tabular-nums">{value}</p><p className={`mt-1 text-[11px] ${tone==="positive"?"text-[var(--positive)]":tone==="negative"?"text-[var(--negative)]":"text-[var(--muted)]"}`}>{detail}</p></Card>}

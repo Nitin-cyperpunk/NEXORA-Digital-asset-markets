@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, MoreHorizontal, Star } from "lucide-react";
+import { ArrowUpRight, Star } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { marketData } from "@/data/markets";
 import { formatCurrency } from "@/lib/utils";

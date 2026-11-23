@@ -1,0 +1,5 @@
+"use client";
+import { useEffect, useRef } from "react";
+import { X } from "lucide-react";
+import type { ReactNode } from "react";
+export function Dialog({open,onClose,title,children}:{open:boolean;onClose:()=>void;title:string;children:ReactNode}){const ref=useRef<HTMLDialogElement>(null);useEffect(()=>{const el=ref.current;if(!el)return;if(open&&!el.open)el.showModal();if(!open&&el.open)el.close()},[open]);return <dialog ref={ref} onClose={onClose} aria-labelledby="dialog-title" className="m-auto w-[min(92vw,480px)] rounded-2xl border border-[var(--border)] bg-[var(--card)] p-0 text-[var(--text)] shadow-2xl backdrop:bg-black/65"><div className="flex items-center justify-between border-b border-[var(--border)] px-5 py-4"><h2 id="dialog-title" className="text-sm font-semibold">{title}</h2><button onClick={()=>ref.current?.close()} aria-label="Close dialog" className="rounded-md p-1.5 text-[var(--muted)] hover:bg-[var(--raised)]"><X size={17}/></button></div><div className="p-5">{children}</div></dialog>}

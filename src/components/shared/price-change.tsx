@@ -1,0 +1,1 @@
+export function PriceChange({value}:{value:number}){const positive=value>=0;return <span className={`tabular-nums ${positive?"text-[var(--positive)]":"text-[var(--negative)]"}`}>{positive?"+":""}{value.toFixed(2)}%</span>}

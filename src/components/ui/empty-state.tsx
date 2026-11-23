@@ -1,0 +1,2 @@
+import { Inbox } from "lucide-react";
+export function EmptyState({title="Nothing here yet",description="Your activity will appear here."}:{title?:string;description?:string}){return <div className="grid min-h-48 place-items-center p-6 text-center"><div><Inbox size={22} className="mx-auto text-[var(--muted)]"/><h2 className="mt-3 text-sm font-medium">{title}</h2><p className="mt-1 text-xs text-[var(--muted)]">{description}</p></div></div>}

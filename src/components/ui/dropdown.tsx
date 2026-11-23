@@ -1,0 +1,2 @@
+import type { ReactNode } from "react";
+export function Dropdown({label,children}:{label:string;children:ReactNode}){return <details className="group relative"><summary className="flex min-h-9 cursor-pointer list-none items-center rounded-lg px-3 text-xs hover:bg-[var(--raised)] focus-visible:outline-2 focus-visible:outline-[var(--accent)]">{label}</summary><div className="absolute right-0 top-full z-40 mt-2 min-w-44 rounded-xl border border-[var(--border)] bg-[var(--card)] p-1.5 shadow-xl">{children}</div></details>}

@@ -1,0 +1,1 @@
+export function AssetIcon({symbol,mark,color}:{symbol:string;mark:string;color:string}){return <span aria-label={symbol} className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-xs font-bold text-white" style={{backgroundColor:color}}>{mark}</span>}
