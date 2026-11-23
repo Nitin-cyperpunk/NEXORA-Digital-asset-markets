@@ -17,16 +17,8 @@ export async function proxy(request: NextRequest) {
       },
     },
   });
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user && request.nextUrl.pathname.startsWith("/")) {
-    const login = request.nextUrl.clone();
-    login.pathname = "/login";
-    login.searchParams.set("next", request.nextUrl.pathname);
-    return NextResponse.redirect(login);
-  }
-  if (user && ["/login", "/signup", "/forgot-password"].includes(request.nextUrl.pathname)) {
-    return NextResponse.redirect(new URL("/dashboard", request.url));
-  }
+  // Demo routes are public by design; refresh an existing Supabase session without gating access.
+  await supabase.auth.getUser();
   return response;
 }
 

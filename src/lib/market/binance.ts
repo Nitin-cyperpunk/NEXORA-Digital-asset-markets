@@ -2,6 +2,7 @@ import type { BinanceTicker24h, MarketTicker } from "@/lib/market/types";
 
 const API = "https://api.binance.com/api/v3";
 const inFlight = new Map<string, Promise<unknown>>();
+let exchangeSymbols: Promise<Set<string>> | undefined;
 
 async function request<T>(path: string): Promise<T> {
   const key = `${API}${path}`;
@@ -16,8 +17,9 @@ async function request<T>(path: string): Promise<T> {
 }
 
 export async function fetchExchangeSymbols() {
-  const info = await request<{ symbols: { symbol: string; status: string; quoteAsset: string }[] }>("/exchangeInfo");
-  return new Set(info.symbols.filter((item) => item.status === "TRADING" && item.quoteAsset === "USDT").map((item) => item.symbol));
+  exchangeSymbols ??= request<{ symbols: { symbol: string; status: string; quoteAsset: string }[] }>("/exchangeInfo").then((info) => new Set(info.symbols.filter((item) => item.status === "TRADING" && item.quoteAsset === "USDT").map((item) => item.symbol)));
+  try { return await exchangeSymbols; }
+  catch (error) { exchangeSymbols = undefined; throw error; }
 }
 
 export async function fetch24hTickers(symbols: string[]) {
